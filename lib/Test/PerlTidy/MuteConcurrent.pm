@@ -5,7 +5,7 @@ use warnings;
 
 use parent 'Exporter';
 
-use vars qw( @EXPORT );    ## no critic (Modules::ProhibitAutomaticExportation)
+use vars qw( @EXPORT );
 @EXPORT = qw( run_tests );
 
 use Test::Builder;
