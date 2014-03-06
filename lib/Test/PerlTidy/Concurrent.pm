@@ -1,4 +1,4 @@
-package Test::PerlTidy::MuteConcurrent;
+package Test::PerlTidy::Concurrent;
 
 use strict;
 use warnings;
@@ -10,6 +10,21 @@ use vars qw( @EXPORT );
 
 use Test::Builder;
 use Test::PerlTidy qw();
+
+=head1 NAME
+
+Test::PerlTidy::Concurrent - Concurrent Test::PerlTidy test executor.
+
+=head1 SYNOPSIS
+
+    # In a file like 't/perltidy.t':
+
+    use Test::PerlTidy::Concurrent;
+
+    run_tests(j => 9);
+
+
+=cut
 
 my $test = Test::Builder->new;
 

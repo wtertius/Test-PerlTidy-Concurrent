@@ -12,7 +12,7 @@ use Capture::Tiny ':all';
 my $shared_arguments = qq{path => "$Bin/test_data", perltidyrc => "$Bin/test_data/perltidyrc", mute => 1};
 my $output_of_sequential = capture_merged {qx(perl -MTest::PerlTidy -e 'run_tests($shared_arguments);')};
 my $output_of_concurrent =
-  capture_merged {qx(perl -I$Bin/../lib -MTest::PerlTidy::MuteConcurrent -e 'run_tests($shared_arguments, j => 9);')};
+  capture_merged {qx(perl -I$Bin/../lib -MTest::PerlTidy::Concurrent -e 'run_tests($shared_arguments, j => 9);')};
 
 like($output_of_sequential, qr/Failed test .*bad\.pl/, 'The bad test is succeeded in sequentual module.');
 like($output_of_concurrent, qr/Failed test .*bad\.pl/, 'The bad test is succeeded in concurrent module.');
