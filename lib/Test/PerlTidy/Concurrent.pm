@@ -13,7 +13,7 @@ use Test::PerlTidy qw();
 
 =head1 NAME
 
-Test::PerlTidy::Concurrent - Concurrent Test::PerlTidy test executor.
+Test::PerlTidy::Concurrent - Concurrent L<Test::PerlTidy> test executor.
 
 =head1 SYNOPSIS
 
@@ -76,3 +76,48 @@ sub _execute_in_parallel {
         $sub_end->(@{delete($pids{$pid})});
     }
 }
+
+1;
+
+=head1 DESCRIPTION
+
+This module does the same work as L<Test::PerlTidy> but in several threads concurrently.
+
+=head2 Differences in regard to L<Test::PerlTidy>:
+
+=over 2
+
+=item run_tests subroutine I<'j' option is added>.
+
+=item run_tests subroutine I<'mute' option is always TRUE> for j != 0.
+
+=back
+
+=head1 IMPLEMENTATION DETAILS
+
+Uses fork for multisequencing.
+
+=head1 SUBROUTINES
+
+=head2 run_tests ( I<%args> )
+
+    run_tests(
+        %arguments_of_Test_PerlTidy_run_test,
+        j => 9,
+    );
+
+=over 1
+
+=item j
+
+Sets max concurrent worker number for test execution.
+
+=back
+
+See other options in L<Test::PerlTidy>.
+
+=head1 SEE ALSO
+
+L<Test::PerlTidy>
+
+=cut
