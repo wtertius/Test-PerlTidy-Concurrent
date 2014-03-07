@@ -120,6 +120,8 @@ See other options in L<Test::PerlTidy>.
 
 L<Test::PerlTidy>
 
+=head1 SOURCES
+
 L<The module at github|https://github.com/wtertius/Test-PerlTidy-Concurrent>
 
 =cut
